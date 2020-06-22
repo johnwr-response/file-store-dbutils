@@ -24,9 +24,16 @@ public class FileStore {
     @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
     private UUID id;
 
-    @Column(unique = true)
-    private String baseUri;
+    private String baseServer;
+    private String baseShare;
+    private String baseFolder;
+
+//    @Column(unique = true)
+//    private String baseUri;
 
     @Column(unique = true)
     private String nickname; // TODO: Replace with tags?
+
+    private String mountPoint;
+
 }

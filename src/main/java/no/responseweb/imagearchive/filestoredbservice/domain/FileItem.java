@@ -7,7 +7,7 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
@@ -28,12 +28,15 @@ public class FileItem {
     private Long version;
 
     @CreationTimestamp
-    @Column(updatable = false)
-    private Timestamp createdDate;
+    @Column(columnDefinition = "TIMESTAMP")
+    private LocalDateTime createdDate;
 
     @UpdateTimestamp
-    private Timestamp lastModifiedDate;
+    @Column(columnDefinition = "TIMESTAMP")
+    private LocalDateTime lastModifiedDate;
 
+    @Type(type="org.hibernate.type.UUIDCharType")
+    @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
     private UUID fileStorePathId;
 
     private String filename;

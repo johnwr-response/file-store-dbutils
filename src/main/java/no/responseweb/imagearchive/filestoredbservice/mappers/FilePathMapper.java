@@ -4,7 +4,7 @@ import no.responseweb.imagearchive.filestoredbservice.domain.FilePath;
 import no.responseweb.imagearchive.model.FilePathDto;
 import org.mapstruct.Mapper;
 
-@Mapper(uses = {DateMapper.class})
+@Mapper
 public interface FilePathMapper {
     FilePath filePathDtoToFilePath(FilePathDto filePathDto);
     FilePathDto filePathToFilePathDto(FilePath filePath);

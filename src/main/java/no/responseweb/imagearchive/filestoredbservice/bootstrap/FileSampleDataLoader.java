@@ -10,10 +10,10 @@ import no.responseweb.imagearchive.filestoredbservice.repositories.FileStoreRepo
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.sql.Timestamp;
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
 @Component
@@ -30,12 +30,21 @@ public class FileSampleDataLoader implements CommandLineRunner {
         }
     }
     private void loadObjects() {
-        String baseFileStore = "//storage6000/Share/Test";
+        String baseServer = "storage6000";
+        String baseShare = "Share";
+        String baseFolder = "Test";
+        String mountPoint = "a";
+        String baseFileStore = File.separator + File.separator + baseServer + File.separator + baseShare + File.separator + baseFolder;
+        // String baseFileStore = "//storage6000/Share/Test";
         Path pathBaseFileStore = Paths.get(baseFileStore);
         @SuppressWarnings("SpellCheckingInspection")
         Path pathSampleSubDir = Paths.get(baseFileStore + "/Testfolder");
         FileStore store = FileStore.builder()
-                .baseUri(Paths.get(baseFileStore).toString())
+                .baseServer(baseServer)
+                .baseShare(baseShare)
+                .baseFolder(baseFolder)
+                .mountPoint(mountPoint)
+//                .baseUri(Paths.get(baseFileStore).toString())
                 .nickname("test a")
                 .build();
         FileStore savedStore = fileStoreRepository.save(store);
@@ -52,16 +61,16 @@ public class FileSampleDataLoader implements CommandLineRunner {
         FileItem item1 = FileItem.builder()
                 .filename("2013-10-05 20.53.06.jpg")
                 .fileStorePathId(savedRootPath.getId())
-                .createdDate(Timestamp.from(Instant.now()))
-                .lastModifiedDate(Timestamp.from(Instant.now()))
+                .createdDate(LocalDateTime.now())
+                .lastModifiedDate(LocalDateTime.now())
                 .build();
         fileItemRepository.save(item1);
         @SuppressWarnings("SpellCheckingInspection")
         FileItem item2 = FileItem.builder()
                 .filename("Ambassdorclass.jpg")
                 .fileStorePathId(savedPath.getId())
-                .createdDate(Timestamp.from(Instant.now()))
-                .lastModifiedDate(Timestamp.from(Instant.now()))
+                .createdDate(LocalDateTime.now())
+                .lastModifiedDate(LocalDateTime.now())
                 .build();
         fileItemRepository.save(item2);
     }
