@@ -1,10 +1,8 @@
 package no.responseweb.imagearchive.filestoredbservice.domain;
 
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -27,11 +25,11 @@ public class FileItem {
     @Version
     private Long version;
 
-    @CreationTimestamp
+//    @CreationTimestamp
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime createdDate;
 
-    @UpdateTimestamp
+//    @UpdateTimestamp
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime lastModifiedDate;
 
