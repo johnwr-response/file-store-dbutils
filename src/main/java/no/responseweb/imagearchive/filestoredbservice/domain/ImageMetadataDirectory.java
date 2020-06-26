@@ -8,7 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
@@ -17,7 +16,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Entity
-public class FileStore {
+public class ImageMetadataDirectory {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
@@ -25,16 +24,9 @@ public class FileStore {
     @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
     private UUID id;
 
-    private String baseServer;
-    private String baseShare;
-    private String baseFolder;
+    @Type(type="org.hibernate.type.UUIDCharType")
+    @Column(length = 36, columnDefinition = "varchar(36)", updatable = true, nullable = false)
+    private UUID collectionId;
 
-    @Column(unique = true)
-    private String nickname; // TODO: Replace with tags?
-
-    private String mountPoint;
-
-    @Column(columnDefinition = "TIMESTAMP")
-    private LocalDateTime latestRefresh;
-
+    private String name;
 }

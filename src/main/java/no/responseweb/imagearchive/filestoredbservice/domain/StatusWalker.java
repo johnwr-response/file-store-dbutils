@@ -17,7 +17,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Entity
-public class FileStore {
+public class StatusWalker {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
@@ -25,16 +25,22 @@ public class FileStore {
     @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
     private UUID id;
 
-    private String baseServer;
-    private String baseShare;
-    private String baseFolder;
+    @Type(type="org.hibernate.type.UUIDCharType")
+    @Column(length = 36, columnDefinition = "varchar(36)", updatable = true, nullable = false)
+    private UUID walkerInstanceToken;
 
-    @Column(unique = true)
-    private String nickname; // TODO: Replace with tags?
+    @Type(type="org.hibernate.type.UUIDCharType")
+    @Column(length = 36, columnDefinition = "varchar(36)", updatable = true, nullable = false)
+    private UUID fileStoreId;
 
-    private String mountPoint;
+    private Boolean ready;
 
     @Column(columnDefinition = "TIMESTAMP")
-    private LocalDateTime latestRefresh;
+    private LocalDateTime runningSince;
 
+    @Column(columnDefinition = "TIMESTAMP")
+    private LocalDateTime lastFinished;
+
+    @Column(columnDefinition = "TIMESTAMP")
+    private LocalDateTime lastActiveDate;
 }
