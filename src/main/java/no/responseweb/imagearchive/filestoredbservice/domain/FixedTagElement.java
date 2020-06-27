@@ -16,7 +16,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Entity
-public class FilePath {
+public class FixedTagElement {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
@@ -24,8 +24,12 @@ public class FilePath {
     @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
     private UUID id;
 
+    // TODO: Remove unique constraint when a structure for linking these elements to objects are implemented
+    @Column(unique = true)
+    private String name;
+
     @Type(type="org.hibernate.type.UUIDCharType")
     @Column(length = 36, columnDefinition = "varchar(36)", nullable = false)
-    private UUID fileStoreId;
-    private String relativePath;
+    private UUID languageId;
+
 }

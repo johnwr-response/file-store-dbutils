@@ -16,7 +16,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Entity
-public class FilePath {
+public class FixedTagEntity {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
@@ -26,6 +26,5 @@ public class FilePath {
 
     @Type(type="org.hibernate.type.UUIDCharType")
     @Column(length = 36, columnDefinition = "varchar(36)", nullable = false)
-    private UUID fileStoreId;
-    private String relativePath;
+    private UUID fixedTagStructureId;
 }

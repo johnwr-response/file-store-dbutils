@@ -25,11 +25,11 @@ public class ImageMetadataValue {
     private UUID id;
 
     @Type(type="org.hibernate.type.UUIDCharType")
-    @Column(length = 36, columnDefinition = "varchar(36)", updatable = true, nullable = false)
+    @Column(length = 36, columnDefinition = "varchar(36)", nullable = false)
     private UUID fileItemId;
 
     @Type(type="org.hibernate.type.UUIDCharType")
-    @Column(length = 36, columnDefinition = "varchar(36)", updatable = true, nullable = false)
+    @Column(length = 36, columnDefinition = "varchar(36)", nullable = false)
     private UUID tagId;
 
     private String value;

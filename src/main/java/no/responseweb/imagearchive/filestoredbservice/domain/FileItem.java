@@ -34,7 +34,7 @@ public class FileItem {
     private LocalDateTime lastModifiedDate;
 
     @Type(type="org.hibernate.type.UUIDCharType")
-    @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
+    @Column(length = 36, columnDefinition = "varchar(36)", nullable = false)
     private UUID fileStorePathId;
 
     private String filename;
