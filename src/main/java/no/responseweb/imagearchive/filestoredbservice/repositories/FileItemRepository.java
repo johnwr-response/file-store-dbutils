@@ -7,5 +7,6 @@ import java.util.List;
 import java.util.UUID;
 
 public interface FileItemRepository extends JpaRepository<FileItem, UUID> {
+    FileItem findFirstById(UUID fileItemId);
     List<FileItem> findAllByFileStorePathId(UUID filePathId);
 }

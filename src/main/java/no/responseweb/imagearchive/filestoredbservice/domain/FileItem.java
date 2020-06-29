@@ -25,11 +25,9 @@ public class FileItem {
     @Version
     private Long version;
 
-//    @CreationTimestamp
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime createdDate;
 
-//    @UpdateTimestamp
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime lastModifiedDate;
 
@@ -40,4 +38,7 @@ public class FileItem {
     private String filename;
 
     private Long size;
+
+    @Lob
+    private byte[] thumbnail;
 }
