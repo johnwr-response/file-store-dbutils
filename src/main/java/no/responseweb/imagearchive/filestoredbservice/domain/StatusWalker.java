@@ -20,7 +20,7 @@ import java.util.UUID;
 public class StatusWalker {
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @GenericGenerator(name = "UUID", strategy = "no.responseweb.imagearchive.filestoredbservice.config.UseExistingOrGenerateUUIdGenerator")
     @Type(type="org.hibernate.type.UUIDCharType")
     @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
     private UUID id;

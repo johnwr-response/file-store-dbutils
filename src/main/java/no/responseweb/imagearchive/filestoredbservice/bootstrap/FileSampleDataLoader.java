@@ -8,6 +8,8 @@ import no.responseweb.imagearchive.filestoredbservice.repositories.ImageMetadata
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.UUID;
+
 @RequiredArgsConstructor
 @Component
 public class FileSampleDataLoader implements CommandLineRunner {
@@ -32,18 +34,20 @@ public class FileSampleDataLoader implements CommandLineRunner {
         );
     }
     private void loadSample() {
+        UUID id = UUID.fromString("c6cab8a5-1376-4439-9184-9b7a86f9190a");
         String baseServer = "storage6000";
         String baseShare = "Share";
         String baseFolder = "Test";
         String mountPoint = "a";
         FileStore store = FileStore.builder()
+                .id(id)
                 .baseServer(baseServer)
                 .baseShare(baseShare)
                 .baseFolder(baseFolder)
                 .mountPoint(mountPoint)
                 .nickname("test a")
                 .build();
-        fileStoreRepository.save(store);
+        fileStoreRepository.saveAndFlush(store);
 
     }
 }
