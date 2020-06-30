@@ -39,6 +39,10 @@ public class FileItem {
 
     private Long size;
 
+    @Type(type="org.hibernate.type.UUIDCharType")
+    @Column(length = 36, columnDefinition = "varchar(36)")
+    private UUID imageFileId;
+
     @Lob
     private byte[] thumbnail;
 }

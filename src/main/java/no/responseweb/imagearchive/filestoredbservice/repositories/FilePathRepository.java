@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface FilePathRepository extends JpaRepository<FilePath, UUID> {
+    FilePath findFirstById(UUID filePathId);
     List<FilePath> findByFileStoreId(UUID fileStoreId);
     FilePath findByFileStoreIdAndRelativePath(UUID fileStoreId, String relativePath);
 }
