@@ -41,7 +41,7 @@ public class FileItem {
 
     @Type(type="org.hibernate.type.UUIDCharType")
     @Column(length = 36, columnDefinition = "varchar(36)")
-    private UUID imageFileId;
+    private UUID fileEntityId;
 
     @Lob
     private byte[] thumbnail;
