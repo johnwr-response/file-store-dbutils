@@ -43,6 +43,8 @@ public class FileItem {
     @Column(length = 36, columnDefinition = "varchar(36)")
     private UUID fileEntityId;
 
+    private Integer fileEntityScore;
+
     @Lob
     private byte[] thumbnail;
 }
